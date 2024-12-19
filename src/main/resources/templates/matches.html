@@ -500,15 +500,20 @@
       fetch(`/getNomenklaturaOptions?words=${rowName}`)
               .then(response => response.json())
               .then(options => {
-                nomenklaturaSelect.innerHTML = '<option value="" disabled selected>...</option><option value="other">Новая номенклатура</option>';
-                options.forEach(option => {
-                  const opt = document.createElement('option');
-                  opt.value = option;
-                  opt.textContent = option;
-                  nomenklaturaSelect.appendChild(opt);
-                });
-                nomenklaturaSelect.classList.remove('d-none');
-                nomenklaturaInput.classList.add('d-none');
+                if (options.length === 0) {
+                  nomenklaturaSelect.classList.add('d-none');
+                  nomenklaturaInput.classList.remove('d-none');
+                } else {
+                  nomenklaturaSelect.innerHTML = '<option value="" disabled selected>...</option><option value="other">Новая номенклатура</option>';
+                  options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.textContent = option;
+                    nomenklaturaSelect.appendChild(opt);
+                  });
+                  nomenklaturaSelect.classList.remove('d-none');
+                  nomenklaturaInput.classList.add('d-none');
+                }
               })
               .catch(error => console.error('Ошибка:', error));
     }

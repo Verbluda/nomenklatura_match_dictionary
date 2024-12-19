@@ -51,7 +51,7 @@ public class DictionaryController {
     @RequestMapping("/delete/{id}")
     public String deleteMatch(@PathVariable(name = "id") Long id) {
         dictionaryService.deleteMatch(id);
-        return "redirect:/matches";
+        return "redirect:/";
     }
 
 }
