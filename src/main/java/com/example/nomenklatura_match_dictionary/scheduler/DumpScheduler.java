@@ -31,7 +31,7 @@ public class DumpScheduler {
     private String localBackupFolder;
 
 
-    @Scheduled(fixedRate = 1_800_000)
+    @Scheduled(fixedRate = 100_800_000)
     private void getDBDump() {
         try {
 
