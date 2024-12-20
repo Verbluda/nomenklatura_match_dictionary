@@ -4,6 +4,7 @@ import com.example.nomenklatura_match_dictionary.model.Match;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface MatchRepository extends JpaRepository<Match, Long> {
@@ -12,4 +13,6 @@ public interface MatchRepository extends JpaRepository<Match, Long> {
     List<Match> search(String searchTerm);
     @Query("SELECT m.nomenklaturaName FROM Match m WHERE m.nomenklaturaName LIKE CONCAT('%',:word,'%')")
     List<String> findNomenklaturaOptions(String word);
+    @Query("SELECT m.rowName FROM Match m WHERE m.rowName LIKE :word")
+    String findByRowName(String word);
 }
