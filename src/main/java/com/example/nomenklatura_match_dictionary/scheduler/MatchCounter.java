@@ -34,9 +34,8 @@ public class MatchCounter {
 
     @Scheduled(fixedRate = 10_800_000)
     private void countMatches() {
-        List<File> files = null;
         try {
-            files = Files.list(Paths.get(supplierFolder))
+            List<File> files = Files.list(Paths.get(supplierFolder).toAbsolutePath())
                     .map(Path::toFile)
                     .filter(File::isFile)
                     .filter(file -> file.getName().endsWith(".xlsx"))

@@ -4,13 +4,11 @@ import com.example.nomenklatura_match_dictionary.model.Match;
 import com.example.nomenklatura_match_dictionary.repository.MatchRepository;
 import com.example.nomenklatura_match_dictionary.service.DictionaryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -25,7 +23,7 @@ public class DictionaryServiceImpl implements DictionaryService {
         model.addAttribute("listMatches", listMatches);
         model.addAttribute("keyword", keyword);
 
-        // Проверка на наличие фильмов
+        // Проверка на наличие соответствий
         boolean noMatchesFound = listMatches.isEmpty();
         model.addAttribute("noMatchesFound", noMatchesFound);
     }

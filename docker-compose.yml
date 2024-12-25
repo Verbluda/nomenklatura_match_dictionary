@@ -9,7 +9,7 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
     volumes:
-      - db:/var/lib/postgresql/data postgres
+      - db:/var/lib/postgresql/data
     ports:
       - "5437:5432"
 
